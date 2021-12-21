@@ -4,6 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.headsupgame.databinding.ActivityAddCelebrityBinding
 import com.example.headsupgame.databinding.ActivityHeadsUpPrepBinding
@@ -16,8 +18,6 @@ class addCelebrityActivity : AppCompatActivity() {
     lateinit var binding: ActivityAddCelebrityBinding
 
 
-    val APIList = ArrayList<CelebrityItem>()
-
     val apiInterface = APIClient().getClient()?.create(APIInterface::class.java)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,15 +26,20 @@ class addCelebrityActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
+
+
         binding.addButton.setOnClickListener {
             postAPI()
-            binding.nameText.text = null
-            binding.taboo1Text.text = null
-            binding.taboo2Text.text = null
-            binding.taboo3Text.text = null
+//            binding.nameText.text = null
+//            binding.taboo1Text.text = null
+//            binding.taboo2Text.text = null
+//            binding.taboo3Text.text = null
+            val intent = Intent(this, headsUpPrepActivity::class.java)
+            startActivity(intent)
 
 
         }
+
 
         binding.goBackToHeadsUpPrepButton.setOnClickListener {
             val intent = Intent(this, headsUpPrepActivity::class.java)
@@ -47,6 +52,7 @@ class addCelebrityActivity : AppCompatActivity() {
             Callback<CelebrityItem> {
             override fun onResponse(call: Call<CelebrityItem>, response: Response<CelebrityItem>) {
 
+                Toast.makeText(this@addCelebrityActivity, "Added successfully", Toast.LENGTH_SHORT).show()
                 Log.d("MAIN", "Successfully posted")
 
             }

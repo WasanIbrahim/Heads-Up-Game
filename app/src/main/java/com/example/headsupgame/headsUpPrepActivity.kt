@@ -21,10 +21,9 @@ class headsUpPrepActivity : AppCompatActivity() {
 
     val APIList = ArrayList<CelebrityItem>()
 
-     var celebID = 0
-
     val apiInterface = APIClient().getClient()?.create(APIInterface::class.java)
 
+    var rowSelected = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHeadsUpPrepBinding.inflate(layoutInflater)
@@ -33,23 +32,26 @@ class headsUpPrepActivity : AppCompatActivity() {
 
         myRV = findViewById(R.id.rvMain)
         myRV.layoutManager = LinearLayoutManager(this)
+
         getAPI()
 
         binding.goToAddCelebrityActivityButton.setOnClickListener {
             val intent = Intent(this, addCelebrityActivity::class.java)
             startActivity(intent)
+            myRV.adapter = RecyclerViewAdapter(this@headsUpPrepActivity, APIList)
+            myRV.adapter?.notifyDataSetChanged()
         }
         binding.goBackToMainButton.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
+            myRV.adapter = RecyclerViewAdapter(this@headsUpPrepActivity, APIList)
+            myRV.adapter?.notifyDataSetChanged()
         }
-
-
 
     }
 
 
-    fun getAPI(){
+    fun getAPI() {
 
         Log.d("respoNoE", "${apiInterface}")
         val dataRecieved = apiInterface?.getTest()
@@ -64,16 +66,14 @@ class headsUpPrepActivity : AppCompatActivity() {
                 if (myResponse != null) {
                     for (i in myResponse) {
                         APIList.add(i)
-                        celebID= i.pk
-                        intent.putExtra("celebID", celebID)
-                        startActivity(intent)
-                        Log.d("getID", "$celebID")
-//                        intent.putExtra("dataId", i.pk)
-                        //println("here is the APIList $APIList")
-                        myRV.adapter = RecyclerViewAdapter(this@headsUpPrepActivity,APIList)
-                        myRV.adapter?.notifyDataSetChanged()
-                        println("here is the APIList $APIList")
+//
 
+                        myRV.adapter = RecyclerViewAdapter(this@headsUpPrepActivity, APIList)
+                        myRV.adapter?.notifyDataSetChanged()
+                        rowSelected = i.pk
+                        println("here is the APIList $APIList")
+                        println("here is the i : $i") //i is the entire row
+                        println("here is the i.pk : ${i.pk}") //i.pk is the pk for individual row
                     }
                 }
             }
@@ -84,23 +84,24 @@ class headsUpPrepActivity : AppCompatActivity() {
         })
     }
 
-    fun deleteAPI(){
+    fun deleteAPI() {
 
-        var celeb2 =0
-
-        celeb2=intent.extras!!.getInt("celebID",0)
-        apiInterface?.deleteTest(celeb2)?.enqueue(object :
+        Log.d("outDeleteAPI", "$rowSelected")
+        apiInterface?.deleteTest(rowSelected)?.enqueue(object :
             Callback<Void> {
             override fun onResponse(call: Call<Void>, response: Response<Void>) {
-                //Toast.makeText(context, "Item row deleted", Toast.LENGTH_SHORT).show()
+                myRV.adapter = RecyclerViewAdapter(this@headsUpPrepActivity, APIList)
+                myRV.adapter?.notifyDataSetChanged()
+
+                Toast.makeText(this@headsUpPrepActivity, "Deleted Successfully", Toast.LENGTH_SHORT)
+                    .show()
+                Log.d("inDeleteAPI", "$rowSelected")
                 Log.d("MAIN", "Successfully Deleted")
-                Log.d("deleteID", "$celebID")
             }
+
             override fun onFailure(call: Call<Void>, t: Throwable) {
                 Log.d("MAIN", "Something went wrong!")
             }
-
         })
     }
-
 }

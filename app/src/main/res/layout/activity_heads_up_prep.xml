@@ -8,14 +8,12 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvMain"
-        android:layout_width="411dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
         android:padding="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
@@ -58,27 +56,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/backbutton" />
-
-    <EditText
-        android:id="@+id/editTextTextPersonName"
-        android:layout_width="306dp"
-        android:layout_height="48dp"
-        android:layout_marginBottom="10dp"
-        android:ems="10"
-        android:hint="Enter a name to delete or edit"
-        android:inputType="textPersonName"
-        android:padding="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="2dp"
-        android:layout_marginBottom="10dp"
-        android:text="Submit"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

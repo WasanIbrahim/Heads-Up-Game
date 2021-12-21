@@ -1,92 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="300dp"
     android:layout_height="wrap_content"
-    android:layout_gravity="center_horizontal"
     android:layout_marginBottom="10dp"
-    android:background="#253160"
-    android:backgroundTint="#253160"
-    android:baselineAligned="false"
+    android:layout_marginLeft="55dp"
+    android:background="@drawable/bg_gradient"
     android:orientation="vertical"
     app:cardCornerRadius="10dp">
 
-    <LinearLayout
+
+    <TextView
+        android:id="@+id/textView1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_gradient"
+        android:padding="10sp"
+        android:text="Name"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
-        android:orientation="vertical">
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5sp"
+        android:text="taboo1"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
 
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10sp"
-            android:text="Name"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5sp"
+        android:text="taboo2"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="5sp"
-            android:text="taboo1"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="18sp" />
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5sp"
+        android:text="taboo3"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
 
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="5sp"
-            android:text="taboo2"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="18sp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="61dp"
+        android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="5sp"
-            android:text="taboo3"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="18sp" />
+        <ImageButton
+            android:id="@+id/deleteButton"
+            android:layout_width="35dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:backgroundTint="#00FFFFFF"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/delete"
+            tools:ignore="SpeakableTextPresentCheck" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="61dp"
-            android:orientation="horizontal">
-
-            <ImageButton
-                android:id="@+id/deleteButton"
-                android:layout_width="35dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:adjustViewBounds="true"
-                android:backgroundTint="#00FFFFFF"
-                android:scaleType="fitCenter"
-                app:srcCompat="@drawable/delete" />
-
-            <ImageButton
-                android:id="@+id/updateButton"
-                android:layout_width="31dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:adjustViewBounds="true"
-                android:backgroundTint="#00FFFFFF"
-                android:padding="15dp"
-                android:scaleType="fitCenter"
-                app:srcCompat="@drawable/edit" />
-        </LinearLayout>
-
-
+        <ImageButton
+            android:id="@+id/updateButton"
+            android:layout_width="31dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:backgroundTint="#00FFFFFF"
+            android:padding="15dp"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/edit"
+            tools:ignore="SpeakableTextPresentCheck" />
     </LinearLayout>
 
-</androidx.cardview.widget.CardView>
+
+</LinearLayout>

@@ -12,9 +12,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HeadsUpGame" >
         <activity
-            android:name=".deleteActivity"
-            android:exported="false" />
-        <activity
             android:name=".editActivity"
             android:exported="false" />
         <activity
