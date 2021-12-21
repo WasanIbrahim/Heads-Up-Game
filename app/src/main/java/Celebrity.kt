@@ -1,0 +1,1 @@
+class Celebrity : ArrayList<CelebrityItem>()
