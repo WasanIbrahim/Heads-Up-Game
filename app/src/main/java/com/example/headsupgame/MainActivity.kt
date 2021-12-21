@@ -3,7 +3,6 @@ package com.example.headsupgame
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import com.example.headsupgame.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -17,8 +16,13 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
-        binding.settingsButton.setOnClickListener{
+        binding.settingsButton.setOnClickListener {
             val intent = Intent(this, headsUpPrepActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.playButton.setOnClickListener {
+            val intent = Intent(this, startTheGameActivity::class.java)
             startActivity(intent)
         }
 
